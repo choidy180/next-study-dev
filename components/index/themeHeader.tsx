@@ -40,6 +40,7 @@ const Container = styled.div`
     font-size: 14px;
     cursor: pointer;
     border-radius: 6px;
+    z-index: 9999999;
     p {
         margin: 0;
         pointer-events: none;
