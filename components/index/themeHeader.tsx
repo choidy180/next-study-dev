@@ -2,21 +2,24 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ThemeHeader = () => {
-    const [themeMode, setThemeMode] = useState<'dark' | 'light'>('dark');
-    const themeModeHandle = (e:any) => {
-        e.preventDefault();
-        setThemeMode(themeMode === 'dark' ? 'light' : 'dark');
+    const [theme, setTheme] = useState('');
+    const themeModeHandle = () => {
+        theme === 'dark' ? document.body.dataset.theme = 'light' : document.body.dataset.theme = 'dark';
+        theme === 'dark' ? localStorage.theme='light' : localStorage.theme='dark';
+        theme === 'dark' ? setTheme('light') : setTheme('dark');
+
     }
     useEffect(() => {
-        document.body.dataset.theme = themeMode;
-        window.localStorage.setItem('theme', themeMode);
-    },[themeMode]);
+        setTheme(localStorage.theme);
+        localStorage.theme === 'dark' ? localStorage.theme='dark' : localStorage.theme='light';
+        localStorage.theme === 'dark' ? document.body.dataset.theme = 'dark' : document.body.dataset.theme = 'light'; 
+    },[]);
     return (
         <Container onClick={themeModeHandle}>
-            {themeMode === 'dark' ? (
-                <p>밝은 모드로 변경</p>
+            {theme !== 'light' ? (
+                <p><span>☀️</span>&nbsp; 밝게 보기</p>
             ) : (
-                <p>어두운 모드로 변경</p>
+                <p><span>🌙</span>&nbsp;어둡게 보기</p>
             )}
         </Container>
     )
@@ -29,7 +32,7 @@ const Container = styled.div`
     width: auto;
     max-width: 160px;
     height: 40px;
-    padding: 4px 14.5px;
+    padding: 4px 10.5px;
     background-color: #dddddd;
     display: flex;
     justify-content: center;
@@ -41,6 +44,11 @@ const Container = styled.div`
         margin: 0;
         pointer-events: none;
         user-select: none;
+        display: flex;
+        align-items: center;
+        span {
+            font-size: 20px;
+        }
     }
 `
 
