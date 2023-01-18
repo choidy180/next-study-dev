@@ -13,14 +13,17 @@ a {
 
 * {
   box-sizing: border-box;
+  position: relative;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+body[data-theme='light']{
+  --bg-main: #FFFFFF;
+  --bg-sub: #dddddd;
+  --tx-main: #000000;
+}
+
+body[data-theme='dark']{
+  --bg-main: #111111;
+  --bg-sub: #333333;
+  --tx-main: #FFFFFF;
 }
