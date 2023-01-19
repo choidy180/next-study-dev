@@ -18,6 +18,7 @@ const ContainerBox = styled.div`
     width: 100vw;
     min-height: calc(100vh);
     background-color: var(--bg-main);
+    transition: all .15s ease-in-out;
     @media screen and (max-width: 500px) {
         min-height: auto;
     }

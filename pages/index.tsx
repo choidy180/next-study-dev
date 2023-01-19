@@ -13,7 +13,6 @@ const Home: NextPage = () => {
 const Container = styled.div`
   width: 100vw;
   min-height: 100vh;
-  transition: all .2s ease-in-out;
   p {
     color: var(--tx-main);
   }
